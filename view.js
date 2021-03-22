@@ -69,6 +69,28 @@ $('.permbutton').click( function( e ) {
     emitter.dispatchEvent(new CustomEvent('userEvent', { detail: new ClickEntry(ActionEnum.CLICK, (e.clientX + window.pageXOffset), (e.clientY + window.pageYOffset), e.target.id,new Date().getTime()) }))
 });
 
+let newPan = define_new_effective_permissions('newPanel', add_info_col = true, which_permissions = null);
+$('#sidepanel').append(newPan)
+let userSelect = define_new_user_select_field('userSelect', "select an user", on_user_change = function(selected_user){
+    $('#newPanel').attr('filepath', '/C/presentation_documents/important_file.txt')
+    $('#newPanel').attr('username', selected_user)
+})
+let dialogItem = define_new_dialog("dialogItem", title='Information')//can add , options = {}, may be important in future
 
+$('#sidepanel').append(userSelect)
+$('.perm_info').click(function(){//NOTE TO SELF YOU HAVE TO DO EVERYTHING ELSE FIRST
+    let filePathInfo = $('#newPanel').attr('filepath');
+    let userNameInfo = $('#newPanel').attr('username');
+    let permissionInfo = $(this).attr('permission_name');
+    let fileObjectVar = path_to_file[filePathInfo]; 
+    let userObjectVar = all_users[userNameInfo];
+    let getExp = allow_user_action(fileObjectVar, userObjectVar, permissionInfo, true)
+    let explanation = get_explanation_text(getExp);
+    $(dialogItem).dialog("open");
+    $(dialogItem).empty();
+    $(dialogItem).text(explanation);
+   // $(dialogItem).append("<p>"+explanation+"<p>");
+
+})
 // ---- Assign unique ids to everything that doesn't have an ID ----
 $('#html-loc').find('*').uniqueId() 
