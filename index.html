@@ -23,6 +23,7 @@
 </head>
 
 <body>
+   
     <div id="inner-body">
 
         <div id="mturk-top-banner-drop-down-content">
@@ -31,6 +32,7 @@
                 Please remove this user entirely from the permission settings for <code>important_file.txt</code>. -->
             </p>
             <br />
+            
             <form action="https://www.mturk.com/mturk/externalSubmit" id="mturk-submit-form" method="POST">
                 <input id="assignment-id" name="assignmentId" type="hidden" />
                 <input id="hit-id" name="hitId" type="hidden" />
@@ -83,6 +85,9 @@
             </span>
         </div>
         <div id="wrapper">
+            <h1>Welcome!</h1>
+            <p>Click on the locks to edit permissions</p>
+            <p>Use the panel on the right to learn more about an user's permissions after selecting a user</p>
             <div data-app="gender-mag" data-mode="tracker" id="html-loc" data-tag="">
                 <!-- div where file and folder structure will be generated:-->
                 <div id="filestructure"></div>
@@ -90,7 +95,7 @@
 
                 <div title="Permission Entry" id="permentry">
                     <div id="perm_entry_inheritance_explanation" style="display:none" class="section">This permission is
-                        inherited from the parent object. Make changes here to override the inherited permissions.</div>
+                        inherited from the outer folder. Make changes here to override the inherited permissions.</div>
                     <span id="perm_entry_name_text">Name: </span>
                     <span id="perm_entry_username" class="ui-widget-content section"
                         style="width:200px;display:inline-block;"></span>
@@ -114,7 +119,7 @@
                                     id="adv_effective_tab_elem">Effective Permissions</a></li>
                         </ul>
                         <div id="adv_permissions_tab">
-                            <div id="adv_perm_object_name" class="section">Object Name: <span
+                            <div id="adv_perm_object_name" class="section">Item Name: <span
                                     id="adv_perm_filepath"></span></div>
                             <div id="adv_perm_entries_text">Permission entries:</div>
                             <div id="adv_perm_table_container" style="height:100px;overflow-y:scroll"
@@ -132,19 +137,19 @@
                             <div id="adv_perm_inheritance_div">
                                 <input type="checkbox" id="adv_perm_inheritance" name="inherit">
                                 <label for="adv_perm_inheritance" id="adv_perm_inheritance_label">Include inheritable
-                                    permissions from this object's parent</label>
+                                    permissions from this item's outer folder</label>
                             </div>
                             <div id="adv_perm_replace_child_div">
                                 <input type="checkbox" id="adv_perm_replace_child_permissions" name="replace_child">
                                 <label for="adv_perm_replace_child_permissions"
-                                    id="adv_perm_replace_child_permissions_label">Replace all child object permissions
-                                    with inheritable permissions from this object</label>
+                                    id="adv_perm_replace_child_permissions_label">Replace all permissions of things inside 
+                                    with permissions from this item</label>
                             </div>
                         </div>
                         <div id="adv_owner_tab">
                             <div id="adv_owner_explanation" class="section">You can take or assign ownership of this
-                                object if you have the required permissions or privileges.</div>
-                            <div id="adv_owner_object_name" class="section">Object Name: <span
+                                item if you have the required permissions or privileges.</div>
+                            <div id="adv_owner_object_name" class="section">Item Name: <span
                                     id="adv_owner_filepath"></span></div>
                             <div id="adv_owner_current_owner_text">Current owner:</div>
                             <div id="adv_owner_current_owner" class="ui-widget-content section"></div>
@@ -154,7 +159,7 @@
                                 Owner</button>
                         </div>
                         <div id="adv_effective_tab">
-                            <div id="adv_effective_object_name" class="section">Object Name: <span
+                            <div id="adv_effective_object_name" class="section">Item Name: <span
                                     id="adv_effective_filepath"></span></div>
                             <div id="adv_effective_user_text">Group or user name:</div>
                             <div id="adv_effective_current_user_line" class="section">
@@ -217,8 +222,7 @@
     </script>
     <script id="script-added-for-256" src="core/tracker.js">
     </script>
-    <p>Click on the locks to edit permissions</p>
-    <p>Use the panel on the right to learn more about an user's permissions after selecting a user</p>
+    
 </body>
 
 </html>

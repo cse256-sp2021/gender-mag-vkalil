@@ -411,7 +411,7 @@ function define_file_permission_groups_list(id_prefix){
                             <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_type">${ace_type}</td>
                             <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_name">${u}</td>
                             <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_permission">${perm}</td>
-                            <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_type">${grouped_perms[ace_type][perm].inherited?"Parent Object":"(not inherited)"}</td>
+                            <td id="${id_prefix}_${file_obj.filename}__${u}_${ace_type}_${perm}_type">${grouped_perms[ace_type][perm].inherited?"Outer Folder/Item":"(not inherited)"}</td>
                         </tr>`)
                     }
                 }
@@ -504,10 +504,11 @@ function define_new_user_select_field(id_prefix, select_button_text, on_user_cha
 // Get a (very simple) text representation of a permissions explanation
 function get_explanation_text(explanation) {
     return `
-    Action allowed?: ${explanation.is_allowed}; 
-    Because of
-    permission set for file: ${explanation.file_responsible?get_full_path(explanation.file_responsible):'N/A'}
-    and for user: ${ explanation.ace_responsible ? get_user_name(explanation.ace_responsible.who) : 'N/A' }
+    Is this action allowed for your selected user?: ${explanation.is_allowed};
+   
+    This is because of the
+    permission set for file: ${explanation.file_responsible?get_full_path(explanation.file_responsible)+"\r\n":"N/A \r\n"}
+    for user: ${ explanation.ace_responsible ? get_user_name(explanation.ace_responsible.who)+"\r\n" : "N/A \r\n" }
     ${ explanation.text_explanation ? `(${explanation.text_explanation})`  : '' }
     `
 }

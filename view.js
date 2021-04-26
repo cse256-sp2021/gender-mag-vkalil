@@ -13,7 +13,7 @@ function make_file_element(file_obj) {
             <h3 id="${file_hash}_header">
                 <span class="oi oi-folder" id="${file_hash}_icon"/> ${file_obj.filename} 
                 <button class="ui-button ui-widget ui-corner-all permbutton" path="${file_hash}" id="${file_hash}_permbutton"> 
-                    <span class="oi oi-lock-unlocked" id="${file_hash}_permicon"/> Edit
+                    <span class="oi oi-lock-unlocked" id="${file_hash}_permicon"/> Edit Folder Permissions
                 </button>
             </h3>
         </div>`)
@@ -33,7 +33,7 @@ function make_file_element(file_obj) {
         return $(`<div class='file'  id="${file_hash}_div">
             <span class="oi oi-file" id="${file_hash}_icon"/> ${file_obj.filename}
             <button class="ui-button ui-widget ui-corner-all permbutton" path="${file_hash}" id="${file_hash}_permbutton"> 
-                <span class="oi oi-lock-unlocked" id="${file_hash}_permicon"/> Edit
+                <span class="oi oi-lock-unlocked" id="${file_hash}_permicon"/> Edit File Permissions
             </button>
         </div>`)
     }
@@ -70,7 +70,7 @@ $('.permbutton').click( function( e ) {
 });
 
 let newPan = define_new_effective_permissions('newPanel', add_info_col = true, which_permissions = null);
-$('#sidepanel').append("Stuck?<br> Select the relevant user below <br> Click on the i to see more information about that permission")
+$('#sidepanel').append("<h2>Stuck?</h2>      Select the user you want to learn about below <br>|      Click on the i to see more information about that permission")
 $('#sidepanel').append(newPan)
 let userSelect = define_new_user_select_field('userSelect', "select an user", on_user_change = function(selected_user){
     $('#newPanel').attr('filepath', '/C/presentation_documents/important_file.txt')
@@ -87,6 +87,9 @@ $('.perm_info').click(function(){//NOTE TO SELF YOU HAVE TO DO EVERYTHING ELSE F
     let userObjectVar = all_users[userNameInfo];
     let getExp = allow_user_action(fileObjectVar, userObjectVar, permissionInfo, true)
     let explanation = get_explanation_text(getExp);
+    console.log("im hereeeeee");
+    console.log(typeof(explanation));
+  
     $(dialogItem).dialog("open");
     $(dialogItem).empty();
     $(dialogItem).text(explanation);
