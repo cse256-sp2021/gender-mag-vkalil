@@ -69,16 +69,20 @@ $('.permbutton').click( function( e ) {
     emitter.dispatchEvent(new CustomEvent('userEvent', { detail: new ClickEntry(ActionEnum.CLICK, (e.clientX + window.pageXOffset), (e.clientY + window.pageYOffset), e.target.id,new Date().getTime()) }))
 });
 
-let newPan = define_new_effective_permissions('newPanel', add_info_col = true, which_permissions = null);
-$('#sidepanel').append("<h2>Stuck?</h2>      Select the user you want to learn about below <br>|      Click on the i to see more information about that permission")
-$('#sidepanel').append(newPan)
-let userSelect = define_new_user_select_field('userSelect', "select an user", on_user_change = function(selected_user){
+
+let userSelect = define_new_user_select_field('userSelect', "Click to Select an User", on_user_change = function(selected_user){
     $('#newPanel').attr('filepath', '/C/presentation_documents/important_file.txt')
     $('#newPanel').attr('username', selected_user)
 })
+
+let newPan = define_new_effective_permissions('newPanel', add_info_col = true, which_permissions = null);
+$('#sidepanel').append("<h2 style = 'padding: 20px;'>Stuck?</h2>     <p style = 'padding: 20px;'> Select the user you want to learn about below <br>      Click on the i to see more information about that permission </p>")
+$('#sidepanel').append(userSelect)
+$('#sidepanel').append(newPan)
+
 let dialogItem = define_new_dialog("dialogItem", title='Information')//can add , options = {}, may be important in future
 
-$('#sidepanel').append(userSelect)
+
 $('.perm_info').click(function(){//NOTE TO SELF YOU HAVE TO DO EVERYTHING ELSE FIRST
     let filePathInfo = $('#newPanel').attr('filepath');
     let userNameInfo = $('#newPanel').attr('username');
