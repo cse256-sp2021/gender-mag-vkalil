@@ -32,7 +32,7 @@ perm_dialog = define_new_dialog('permdialog', title='Permissions', options = {
 obj_name_div = $('<div id="permdialog_objname" class="section">Object Name: <span id="permdialog_objname_namespan"></span> </div>')
 
 //Make the div with the explanation about special permissions/advanced settings:
-advanced_expl_div = $('<div id="permdialog_advanced_explantion_text"><b>For settings you dont see here, click Advanced</b></div>')
+advanced_expl_div = $('<div id="permdialog_advanced_explantion_text"><b>For settings you dont see here (such as inherited permissions), click Advanced</b></div>')
 
 // Make the (grouped) permission checkboxes table:
 grouped_permissions = define_grouped_permission_checkboxes('permdialog_grouped_permissions')
@@ -120,7 +120,7 @@ are_you_sure_dialog.text('Do you want to remove permissions for this user?')
 
 // Make actual "remove" button:
 
-perm_remove_user_button  = $('<p>To remove an user, select the user above, then click remove</p><button id="perm_remove_user" class="ui-button ui-widget ui-corner-all">Remove User From Permissions</button>')
+perm_remove_user_button  = $('<p>To remove a user, select the user above, then click remove</p><button id="perm_remove_user" class="ui-button ui-widget ui-corner-all">Remove User From Permissions</button>')
 perm_remove_user_button.click(function(){
     // Get the current user and filename we are working with:
     let selected_username = file_permission_users.attr('selected_item')
